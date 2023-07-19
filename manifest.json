@@ -1,0 +1,40 @@
+{
+  "name": "土巴兔前端工具集",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "土巴兔前端工具集，BOSS、微信公众平台界面的一些功能增强",
+  "host_permissions": [
+    "https://oms.to8to.com/*",
+    "https://channels.weixin.qq.com/*",
+    "https://apigw.to8to.com/*"
+  ],
+  "content_scripts": [
+    {
+      "run_at": "document_end",
+      "matches": [
+        "https://oms.to8to.com/*",
+        "https://channels.weixin.qq.com/*"
+      ],
+      "css": ["style.css"],
+      "js": ["contentScripts.js"],
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "cookies",
+    "tabs"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["sdk.js"],
+      "matches": [
+        "https://oms.to8to.com/*",
+        "https://channels.weixin.qq.com/*"
+      ]
+    }
+  ]
+}
